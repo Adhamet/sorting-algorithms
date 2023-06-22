@@ -12,13 +12,13 @@ void insertion_sort_list(listint_t **list)
 	if (list == NULL || (*list)->next == NULL)
 		return;
 
-	while (current_node != NULL)
+	while (current_node)
 	{
 		tmp = current_node;
-		while (tmp->prev != NULL && tmp->prev->n > tmp->n)
+		while (tmp->prev && tmp->prev->n > tmp->n)
 		{
 			tmp->prev->next = tmp->next;
-			if (tmp->next != NULL)
+			if (tmp->next)
 				tmp->next->prev = tmp->prev;
 			tmp->next = tmp->prev;
 			tmp->prev = tmp->prev->prev;
