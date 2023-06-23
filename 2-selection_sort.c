@@ -1,5 +1,11 @@
 #include "sort.h"
 
+/**
+ * selection_sort - sorts an array of integers in
+ * ascending using the Selection Sort algorithm
+ * @array: array to sort
+ * @size: size of array
+ */
 void selection_sort(int *array, size_t size)
 {
 	size_t i, j, tmp, min;
@@ -20,7 +26,7 @@ void selection_sort(int *array, size_t size)
 			tmp = array[min];
 			array[min] = array[i];
 			array[i] = tmp;
-			print_array(array,size);
+			print_array(array, size);
 		}
 	}
 }
