@@ -4,7 +4,7 @@
 listint_t *swap_node(listint_t *node, listint_t **list);
 
 /**
- * cocktail_sort_list: sorts a doubly linked list of integers in 
+ * cocktail_sort_list - sorts a doubly linked list of integers in
  * ascending order using the Cocktail shaker sort algorithm
  * @list: list to sort
  */
@@ -60,6 +60,7 @@ void cocktail_sort_list(listint_t **list)
 listint_t *swap_node(listint_t *node, listint_t **list)
 {
 	listint_t *current = node;
+
 	current->prev->next = current->next;
 	if (current->next)
 		current->next->prev = current->prev;

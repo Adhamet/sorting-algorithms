@@ -27,9 +27,17 @@ void insertion_sort_list(listint_t **list)
 	}
 }
 
+/**
+ * swap_node - swaps between current node
+ * and its previous in a list
+ * @node: the current node
+ * @list: the list
+ * Return: pointer to list
+ */
 listint_t *swap_node(listint_t *node, listint_t **list)
 {
 	listint_t *current = node;
+
 	current->prev->next = current->next;
 	if (current->next)
 		current->next->prev = current->prev;
