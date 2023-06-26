@@ -1,5 +1,8 @@
 #include "sort.h"
 
+/* helper function */
+listint_t *swap_node(listint_t *node, listint_t **list);
+
 /**
  * insertion_sort_list - sorts a doubly linked list
  * in acsending order using Insertion Sort algorithm
@@ -7,29 +10,35 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current_node, *tmp;
+	listint_t *node;
 
 	if (list == NULL || *list == NULL)
 		return;
 
-	current_node = *list;
-	while (current_node)
+	node = *list;
+	while (node)
 	{
-		tmp = current_node;
-		while ((tmp->prev) && (tmp->prev->n > tmp->n))
+		while ((node->prev) && (node->prev->n > node->n))
 		{
-			tmp->prev->next = tmp->next;
-			if (tmp->next)
-				tmp->next->prev = tmp->prev;
-			tmp->next = tmp->prev;
-			tmp->prev = tmp->prev->prev;
-			tmp->next->prev = tmp;
-			if (tmp->prev)
-				tmp->prev->next = tmp;
-			else
-				*list = tmp;
+			node = swap_node(node, list);
 			print_list(*list);
 		}
-		current_node = current_node->next;
+		node = node->next;
 	}
+}
+
+listint_t *swap_node(listint_t *node, listint_t **list)
+{
+	listint_t *current = node;
+	current->prev->next = current->next;
+	if (current->next)
+		current->next->prev = current->prev;
+	current->next = current->prev;
+	current->prev = current->prev->prev;
+	current->next->prev = current;
+	if (current->prev)
+		current->prev->next = current;
+	else
+		*list = current;
+	return (current);
 }
